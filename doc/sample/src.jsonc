@@ -1,0 +1,90 @@
+{
+  "Format": "1.18",
+  "Replace": "repl.jsonc",
+  "Changes": [],
+  "Meta": [
+    {
+      // 自定义角色
+      "Type": "Character",
+      "ID": "Jodi",
+      "Portrait": "Portraits/Jodi.png",
+      "Sprite": "Characters/Jodi.png",
+      "Dialogue": "Dialogue.xml",
+      "EngagementDialogue": "EngagementDialogue.xml",
+      "MarriageDialogue": "Characters/Dialogue/MarriageDialogueJodi.json",
+      "Events": {
+        "Farm": "EventsFarm93.xml",
+        "SamHouse": "EventsSamHouse94.xml"
+      },
+      "Mail": {
+        "Jodi": "亲爱的 @,^我给花园订购太多肥料了，然后正好可以邮给你！！不管你是用掉还是卖掉，记得亲自来谢我。  ^   -乔迪 %item object 368 5 369 5 370 5 %%",
+        "JodiCooking": "@,^在我能亲自给你做顿好饭之前，这份食谱应该能让你吃点好的。 ^   -乔迪%item cookingRecipe %%"
+      }
+    },
+    {
+      // 物品修复
+      "Type": "Folder",
+      "Prototype": {
+        "LogName": "乔迪物品修复"
+      },
+      "Changes": [
+        {
+          "Action": "EditData",
+          "Target": "Strings/StringsFromMaps",
+          "Entries": {
+            "SamHouse.3": "乔迪-^因为我很快就会回家，因此我想先告诉你几件事。^我可能和你记忆中的我有很大的不同。 我在外面看到了某些事情，让我感到十分震撼，最近我的精神一直紧绷着，无法放松。^我不想吓到你或者让你感到不安， 我只是不想让你见到我时感到震惊。^记住, 无论我在你面前表现的有多奇怪，你和孩子始终是我的一切。^我们很快会见面。^-肯特"
+          }
+        }
+      ]
+    },
+    {
+      //SVE对话补丁包
+      "Type": "Folder",
+      "Prototype": {
+        "LogName": "SVE对话补丁包",
+        "Action": "EditData",
+        "Target": "Characters/Dialogue/Jodi"
+      },
+      "Changes": [
+        {
+          "When": {
+            "HasMod|contains=FlashShifter.StardewValleyExpandedCP": "true"
+          },
+          "Entries": "DialogueSVE.xml"
+        },
+        {
+          "Entries": "DialogueSVEF.xml"
+        }
+      ]
+    },
+    {
+      // 乔迪可约会：
+      // 在2♥周一与乔迪聊到去礼拜的原因, 在第二次对话时选择安慰她：3064001。
+      // 在第一年经历4♥事件94(第一年的砂锅鱼任务)。
+      // 经历事件“乔迪的秘密”
+      "Type": "Folder",
+      "Prototype": {
+        "Action": "EditData",
+        "When": {
+          // "HasDialogueAnswer": "3064001",
+          "HasSeenEvent": "94"
+        }
+      },
+      // 条件达成后，乔迪变为可约会对象，并拥有自定义对话
+      "Changes": [
+        {
+          // 乔迪可约会
+          "Target": "Data/NPCDispositions",
+          "Entries": {
+            "Jodi": "adult/polite/neutral/neutral/female/datable/Kent/Town/fall 11/Sam 'eldest_son' Vincent 'youngest_son' Kent 'husband'/SamHouse 4 5/乔迪"
+          }
+        },
+        {
+          // 乔迪约会对话
+          "Target": "Characters/Dialogue/Jodi",
+          "Entries": ["Dialogue.xml", "Dialoguelove.xml"]
+        }
+      ]
+    }
+  ]
+}

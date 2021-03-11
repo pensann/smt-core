@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entries action="EditData" target="Data/Events/Farm">
+	<entry id="94/e 93/k 95/t 1800 1950/i 136/y 1">
+		50s
+		6 15
+		farmer 4 19 0 Sam 17 13 0 Jodi 7 4 0
+		<!-- skippable -->
+		removeItem 136
+		removeQuest 22
+		speed Jodi 4
+		move Jodi 0 10 2
+		emote Jodi 20
+		speak Jodi
+			"啊，你好！ @！进来！"
+		move farmer 0 -3 1
+		move farmer 2 0 0
+		move farmer 0 -1 1
+		speak Jodi
+			"这是鱼的味道吗？太好了，原料准备齐了！"
+		faceDirection Jodi 1
+		speak Jodi
+			"山姆！进来帮我准备下晚饭好吗？"
+		pause 300
+		speak Sam
+			"……遵命。$a"
+		move Sam -5 0 3 true
+		proceedPosition Sam
+		stopAnimation farmer
+		doAction 12 14
+		move Sam 0 2 3 false
+		move Sam -4 0 3
+		faceDirection Jodi 2
+		pause 300
+		showFrame 35
+		addObject 7 15 136
+		playSound fishSlap
+		pause 800
+		stopAnimation farmer
+		pause 400
+		speak Jodi
+			"哇，看起来质量绝佳的鲈鱼呢， @。多谢你带来的礼物啦。$h"
+		pause 1000
+		<!-- 饭前的小插曲 -->
+		globalFade
+		viewport -1000 -1000
+		warp Sam 4 5
+		faceDirection Sam 0
+		removeTemporarySprites
+		viewport 6 15 true
+		speed Jodi 1
+		move Jodi 0 1 2
+		Animate Jodi false true 250 0 1 2 3
+		<!-- 一共移动15 -->
+		{positionOffset Jodi 0 1
+		pause 24}*15
+		stopAnimation Jodi
+		faceDirection Jodi 3
+		speak Jodi
+			"谢谢你……为我做了这么多!$4"
+		emote Jodi 32
+		Animate Jodi false true 250 12 13 14 15
+		{positionOffset Jodi -1 0
+		pause 24}*35
+		stopAnimation Jodi
+		pause 500
+		emote Jodi 20
+		Animate Jodi false false 240 29 30
+		pause 1000
+		emote farmer 60
+		pause 1000
+		<!-- 结束 -->
+		globalFade
+		viewport -1000 -1000
+		pause 1000
+		message
+			"唔……这鲈鱼真是脆！面包屑也糊得十分完美！"
+		pause 500
+		message
+			"我现在感觉就像是家庭的一份子。"
+		pause 1500
+		end warpOut
+	</entry>
+</entries>
